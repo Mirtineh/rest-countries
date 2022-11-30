@@ -1,11 +1,11 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
+import { Route, Routes } from "react-router-dom";
+import Home from "./routes/Home";
 
 function App() {
   return (
-    <>
-      <h1 className="text-red-400">This is mirtineh</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<Home></Home>}></Route>
+    </Routes>
   );
 }
 
