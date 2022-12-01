@@ -1,11 +1,14 @@
 import { FunctionComponent } from "react";
+import { CountryType } from "../routes/root";
 
-interface CountryCardProps {}
+interface CountryCardProps {
+  country: CountryType;
+}
 
-const CountryCard: FunctionComponent<CountryCardProps> = () => {
+const CountryCard: FunctionComponent<CountryCardProps> = ({ country }) => {
   return (
     <>
-      <h1>Individual country</h1>
+      <p className="text-white">{country.name.common}</p>
     </>
   );
 };

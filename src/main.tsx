@@ -2,15 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import "./app.css";
+import "./App.css";
 import {
   BrowserRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Root from "./routes/root";
+import Root, { rootLoader } from "./routes/root";
 import ErrorPage from "./routes/ErrorPage";
 import CountryList from "./components/CountryList";
+import CountryDetailPage from "./routes/CountryDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,8 +19,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/countries",
+        index: true,
         element: <CountryList />,
+        loader: rootLoader,
+      },
+      {
+        path: "/countries/:name",
+        element: <CountryDetailPage />,
       },
     ],
   },
