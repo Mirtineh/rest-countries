@@ -11,7 +11,7 @@ import {
 import Root, { rootLoader } from "./routes/root";
 import ErrorPage from "./routes/ErrorPage";
 import CountryList from "./components/CountryList";
-import CountryDetailPage from "./routes/CountryDetailPage";
+import CountryDetailPage, { countryLoader } from "./routes/CountryDetailPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/countries/:name",
         element: <CountryDetailPage />,
+        loader: countryLoader,
       },
     ],
   },

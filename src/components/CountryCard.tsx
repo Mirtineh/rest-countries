@@ -8,7 +8,7 @@ interface CountryCardProps {
 const CountryCard: FunctionComponent<CountryCardProps> = ({ country }) => {
   return (
     <>
-      <div className="w-64 h-[340px] bg-dark-blue rounded-md">
+      <div className="w-64 h-[340px] bg-dark-blue rounded-md hover:cursor-pointer">
         <span className="block w-full h-40">
           <img
             src={country.flags.png}
