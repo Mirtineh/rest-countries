@@ -5,10 +5,10 @@ import { FunctionComponent, useState } from "react";
 interface FilterDropdownProps {}
 
 const FilterDropdown: FunctionComponent<FilterDropdownProps> = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <div className="relative w-1/2">
+      <div className="relative w-1/2 hover:cursor-pointer">
         <div className="flex items-center justify-between w-full bg-dark-blue text-white py-4 px-4 rounded-md">
           <p>Filter by Region</p>
           <FontAwesomeIcon

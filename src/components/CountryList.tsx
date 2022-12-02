@@ -14,9 +14,11 @@ const CountryList: FunctionComponent<CountryListProps> = () => {
     <>
       <div className="my-8 mx-3">
         <SearchBar />
-        {countries.map((country) => {
-          return <CountryCard key={country.name.common} country={country} />;
-        })}
+        <div className="grid grid-cols-1 gap-10 justify-items-center mt-7">
+          {countries.map((country) => {
+            return <CountryCard key={country.name.common} country={country} />;
+          })}
+        </div>
       </div>
     </>
   );

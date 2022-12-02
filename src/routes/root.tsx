@@ -29,6 +29,10 @@ export interface CountryType {
     [index: string]: string;
   };
   borders: string[];
+  flags: {
+    png: string;
+    svg: string;
+  };
 }
 export interface CountriesType {
   countries: CountryType[];
