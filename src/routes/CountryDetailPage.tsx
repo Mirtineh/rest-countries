@@ -34,27 +34,43 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
         </button>
         <img src={country.flags.png} alt="" />
         <p className="font-extrabold">{country.name.common}</p>
-        <div className="flex flex-col gap-3">
-          <p>
-            <span>Native Name: </span>
-            <span className="font-light">Sample Name</span>
-          </p>
-          <p>
-            <span>Population: </span>
-            <span className="font-light">{country.population}</span>
-          </p>
-          <p>
-            <span>Region: </span>
-            <span className="font-light">{country.region}</span>
-          </p>
-          <p>
-            <span>Sub Region: </span>
-            <span className="font-light">{country.subregion}</span>
-          </p>
-          <p>
-            <span>Capital: </span>
-            <span className="font-light">{country.capital}</span>
-          </p>
+        <div className="grid grid-cols-1 gap-8">
+          <div className="flex flex-col gap-2">
+            <p>
+              <span>Native Name: </span>
+              <span className="font-light">Sample Name</span>
+            </p>
+            <p>
+              <span>Population: </span>
+              <span className="font-light">{country.population}</span>
+            </p>
+            <p>
+              <span>Region: </span>
+              <span className="font-light">{country.region}</span>
+            </p>
+            <p>
+              <span>Sub Region: </span>
+              <span className="font-light">{country.subregion}</span>
+            </p>
+            <p>
+              <span>Capital: </span>
+              <span className="font-light">{country.capital}</span>
+            </p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <p>
+              <span>Top Level Domain: </span>
+              <span className="font-light">{country.tld}</span>
+            </p>
+            <p>
+              <span>Currencies: </span>
+              <span className="font-light">currency</span>
+            </p>
+            <p>
+              <span>Languages: </span>
+              <span className="font-light">Languages</span>
+            </p>
+          </div>
         </div>
       </div>
     </>
