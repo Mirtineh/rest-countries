@@ -18,7 +18,7 @@ export interface CountryType {
   population: number;
   capital: string[];
   region: string;
-  subRegion: string;
+  subregion: string;
   tld: string[];
   currencies: {
     [index: string]: {
