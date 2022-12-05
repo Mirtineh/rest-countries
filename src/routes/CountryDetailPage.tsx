@@ -27,13 +27,13 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
   console.log(country);
   return (
     <>
-      <div className="ml-6 mt-10 grid grid-cols-1 gap-14 place-items-start">
+      <div className="ml-6 mt-10 pb-14 grid grid-cols-1 gap-14 place-items-start">
         <button className="bg-dark-blue py-1 px-5 rounded-sm ">
           <FontAwesomeIcon icon={faArrowLeftLong} className="mr-2" />
           Back
         </button>
         <img src={country.flags.png} alt="" />
-        <p className="font-extrabold">{country.name.common}</p>
+        <p className="font-extrabold text-lg">{country.name.common}</p>
         <div className="grid grid-cols-1 gap-8">
           <div className="flex flex-col gap-2">
             <p>
@@ -70,6 +70,16 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <span>Languages: </span>
               <span className="font-light">Languages</span>
             </p>
+          </div>
+          <div className="flex flex-col gap-4">
+            <p className="font-extrabold">Border Countries:</p>
+            <div className="flex gap-2">
+              {country.borders.map((country) => (
+                <button className="py-1 px-6 rounded-sm bg-dark-blue">
+                  {country}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
