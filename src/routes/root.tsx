@@ -34,7 +34,7 @@ export interface CountryType {
     svg: string;
   };
 }
-export type region = "Asia" | "Africa" | "Americas" | "Europe" | "Oceania";
+export type region = "Asia" | "Africa" | "Americas" | "Europe" | "Oceania" | "";
 export interface CountriesType {
   countries: CountryType[];
 }
