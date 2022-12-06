@@ -1,5 +1,9 @@
 import { FunctionComponent } from "react";
-import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  useLoaderData,
+  useNavigate,
+} from "react-router-dom";
 import { CountryType } from "./root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +13,7 @@ import {
   faBackspace,
   faBackward,
 } from "@fortawesome/free-solid-svg-icons";
+import Button from "../components/Button";
 
 export const countryLoader = async ({
   params,
@@ -24,11 +29,14 @@ interface CountryDetailPageProps {}
 
 const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
   const [country] = useLoaderData() as CountryType[];
-  console.log(country);
+  const navigate = useNavigate();
   return (
     <>
       <div className="ml-6 mt-10 pb-14 grid grid-cols-1 gap-14 place-items-start">
-        <button className="bg-dark-blue py-1 px-5 rounded-sm ">
+        <button
+          className="bg-dark-blue py-1 px-5 rounded-sm "
+          onClick={() => navigate(-1)}
+        >
           <FontAwesomeIcon icon={faArrowLeftLong} className="mr-2" />
           Back
         </button>
@@ -71,16 +79,20 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <span className="font-light">Languages</span>
             </p>
           </div>
-          <div className="flex flex-col gap-4">
-            <p className="font-extrabold">Border Countries:</p>
-            <div className="flex gap-2">
-              {country.borders.map((country) => (
-                <button className="py-1 px-6 rounded-sm bg-dark-blue">
-                  {country}
-                </button>
-              ))}
+          {country.borders ? (
+            <div className="flex flex-col gap-4">
+              <p className="font-extrabold">Border Countries:</p>
+              <div className="flex gap-2">
+                {country.borders.map((country) => (
+                  <Button
+                    key={country}
+                    label={country}
+                    onClick={() => console.log("how are you")}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
+          ) : null}
         </div>
       </div>
     </>

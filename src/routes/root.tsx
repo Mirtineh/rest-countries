@@ -17,7 +17,7 @@ export interface CountryType {
   };
   population: number;
   capital: string[];
-  region: string;
+  region: region;
   subregion: string;
   tld: string[];
   currencies: {
@@ -34,6 +34,7 @@ export interface CountryType {
     svg: string;
   };
 }
+export type region = "Asia" | "Africa" | "Americas" | "Europe" | "Oceania";
 export interface CountriesType {
   countries: CountryType[];
 }
