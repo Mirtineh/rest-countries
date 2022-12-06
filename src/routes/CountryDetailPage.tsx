@@ -50,17 +50,23 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="ml-6 mt-10 pb-14 grid grid-cols-1 gap-14 place-items-start">
+      <div className="mx-6 sm:mx-16 mt-10 pb-14 grid grid-cols-1 sm:grid-cols-2  gap-14 gap-x-20 place-items-start">
         <button
-          className="bg-dark-blue py-1 px-5 rounded-sm "
+          className="bg-dark-blue py-1 px-5 rounded-sm sm:col-span-2"
           onClick={() => navigate(-1)}
         >
           <FontAwesomeIcon icon={faArrowLeftLong} className="mr-2" />
           Back
         </button>
-        <img src={country.flags.png} alt="" />
-        <p className="font-extrabold text-lg">{country.name.common}</p>
-        <div className="grid grid-cols-1 gap-8">
+        <img
+          src={country.flags.svg}
+          className="w-full h-full object-cover"
+          alt=""
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          <p className="font-extrabold text-lg sm:col-span-2">
+            {country.name.common}
+          </p>
           <div className="flex flex-col gap-2">
             <p>
               <span>Native Name: </span>
@@ -97,10 +103,10 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <span className="font-light">Languages</span>
             </p>
           </div>
-          {neighbours ? (
-            <div className="flex flex-col gap-4">
+          {neighbours.length > 0 ? (
+            <div className="flex flex-col gap-4 sm:col-span-2">
               <p className="font-extrabold">Border Countries:</p>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {neighbours.map((neighbor) => (
                   <Link
                     to={`/countries/${neighbor.name.common}`}

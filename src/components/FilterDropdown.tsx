@@ -31,7 +31,7 @@ const FilterDropdown: FunctionComponent<FilterDropdownProps> = ({
   };
   return (
     <>
-      <div className="relative w-1/2 hover:cursor-pointer">
+      <div className="relative w-full hover:cursor-pointer">
         <div
           className="flex items-center justify-between w-full bg-dark-blue text-white py-4 px-4 rounded-md"
           onClick={() => setIsOpen((prev) => !prev)}

@@ -25,14 +25,14 @@ const CountryList: FunctionComponent<CountryListProps> = () => {
   });
   return (
     <>
-      <div className="my-8 mx-3">
+      <div className="my-8 mx-3 sm:mx-20">
         <SearchBar
           searchValue={searchValue}
           region={region}
           onSearchChange={(value) => setSearchValue(value)}
           onRegionChange={(region) => setRegion(region)}
         />
-        <div className="grid grid-cols-1 gap-10 justify-items-center mt-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 sm:gap-y-20 justify-items-center place-content-between mt-7 sm:mt-16">
           {filteredCountries.map((country) => {
             return (
               <Link
