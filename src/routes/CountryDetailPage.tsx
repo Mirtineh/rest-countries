@@ -1,34 +1,52 @@
 import { FunctionComponent } from "react";
 import {
+  Link,
   LoaderFunctionArgs,
   useLoaderData,
   useNavigate,
 } from "react-router-dom";
 import { CountryType } from "./root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowCircleLeft,
-  faArrowLeft,
-  faArrowLeftLong,
-  faBackspace,
-  faBackward,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 import Button from "../components/Button";
+
+type CountryWithNeighbours = {
+  country: CountryType;
+  neighbours: CountryType[];
+};
 
 export const countryLoader = async ({
   params,
-}: LoaderFunctionArgs): Promise<CountryType[]> => {
-  const result = await fetch(
-    `https://restcountries.com/v3.1/name/${params.name}`
-  );
-  if (!result.ok) throw Error("Something went wrong");
-  const country = await result.json();
-  return country;
+}: LoaderFunctionArgs): Promise<CountryWithNeighbours> => {
+  try {
+    const { data } = await axios.get<CountryType[]>(
+      `https://restcountries.com/v3.1/name/${params.name}`
+    );
+    const [country] = data;
+    const { data: neighbours } = country.borders
+      ? await axios.get<CountryType[]>("https://restcountries.com/v3.1/alpha", {
+          params: { codes: country.borders.toString() },
+        })
+      : { data: [] };
+    return {
+      country,
+      neighbours,
+    };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("error message: ", error.message);
+      throw Error();
+    } else {
+      console.log("unexpected error: ", error);
+      throw Error();
+    }
+  }
 };
 interface CountryDetailPageProps {}
 
 const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
-  const [country] = useLoaderData() as CountryType[];
+  const { country, neighbours } = useLoaderData() as CountryWithNeighbours;
   const navigate = useNavigate();
   return (
     <>
@@ -79,16 +97,21 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <span className="font-light">Languages</span>
             </p>
           </div>
-          {country.borders ? (
+          {neighbours ? (
             <div className="flex flex-col gap-4">
               <p className="font-extrabold">Border Countries:</p>
               <div className="flex gap-2">
-                {country.borders.map((country) => (
-                  <Button
-                    key={country}
-                    label={country}
-                    onClick={() => console.log("how are you")}
-                  />
+                {neighbours.map((neighbor) => (
+                  <Link
+                    to={`/countries/${neighbor.name.common}`}
+                    key={neighbor.name.common}
+                  >
+                    <Button
+                      key={neighbor.name.common}
+                      label={neighbor.name.common}
+                      onClick={() => console.log("how are you")}
+                    />
+                  </Link>
                 ))}
               </div>
             </div>

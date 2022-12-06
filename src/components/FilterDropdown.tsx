@@ -2,7 +2,6 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FunctionComponent, useEffect, useState } from "react";
 import { region } from "../routes/root";
-import { Entry } from "./FilterDropdown";
 
 interface FilterDropdownProps {
   options: Entry[];
