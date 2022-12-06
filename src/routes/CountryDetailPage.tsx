@@ -46,8 +46,20 @@ export const countryLoader = async ({
 interface CountryDetailPageProps {}
 
 const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
-  const { country, neighbours } = useLoaderData() as CountryWithNeighbours;
   const navigate = useNavigate();
+  const { country, neighbours } = useLoaderData() as CountryWithNeighbours;
+
+  //filters
+  const native = Object.keys(country.languages)[0];
+  const languages = Object.values(country.languages).join(", ");
+  const getCurrency = () => {
+    const currenciesKeys = Object.keys(country.currencies);
+    let currencies: string[] = [];
+    currenciesKeys.forEach((key) => {
+      currencies.push(country.currencies[key].name);
+    });
+    return currencies.join(", ");
+  };
   return (
     <>
       <div className="mx-6 sm:mx-16 mt-10 pb-14 grid grid-cols-1 sm:grid-cols-2  gap-14 gap-x-20 place-items-start">
@@ -70,11 +82,15 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
           <div className="flex flex-col gap-2">
             <p>
               <span>Native Name: </span>
-              <span className="font-light">Sample Name</span>
+              <span className="font-light">
+                {country.name.nativeName[native].common}
+              </span>
             </p>
             <p>
               <span>Population: </span>
-              <span className="font-light">{country.population}</span>
+              <span className="font-light">
+                {country.population.toLocaleString()}
+              </span>
             </p>
             <p>
               <span>Region: </span>
@@ -96,11 +112,11 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
             </p>
             <p>
               <span>Currencies: </span>
-              <span className="font-light">currency</span>
+              <span className="font-light">{getCurrency()}</span>
             </p>
             <p>
               <span>Languages: </span>
-              <span className="font-light">Languages</span>
+              <span className="font-light">{languages}</span>
             </p>
           </div>
           {neighbours.length > 0 ? (

@@ -23,7 +23,9 @@ const CountryCard: FunctionComponent<CountryCardProps> = ({ country }) => {
           <div className="flex flex-col gap-1">
             <p className="text-sm">
               <span className="font-semibold">Population: </span>
-              <span className="font-light">{country.population}</span>
+              <span className="font-light">
+                {country.population.toLocaleString()}
+              </span>
             </p>
             <p>
               <span className="font-semibold">Region: </span>
