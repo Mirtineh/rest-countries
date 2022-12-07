@@ -33,7 +33,7 @@ const FilterDropdown: FunctionComponent<FilterDropdownProps> = ({
     <>
       <div className="relative w-full hover:cursor-pointer">
         <div
-          className="flex items-center justify-between w-full bg-dark-blue text-white py-4 px-4 rounded-md"
+          className="flex items-center justify-between w-full py-4 px-4 rounded-md"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           {selected === "" ? <p>Filter by Region</p> : <p>{selected}</p>}
@@ -46,7 +46,7 @@ const FilterDropdown: FunctionComponent<FilterDropdownProps> = ({
               tabIndex={-1}
               onClick={() => setIsOpen((prev) => !prev)}
             ></button>
-            <div className="absolute w-full bg-dark-blue my-1 rounded-md text-white py-3 px-4 cursor-pointer">
+            <div className="absolute w-full my-1 rounded-md  py-3 px-4 cursor-pointer bg-white dark:bg-dark-blue">
               {options.map((option) => (
                 <p
                   className="py-1"

@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext, useState } from "react";
 import { LoaderFunction, Outlet, useLoaderData } from "react-router-dom";
 import CountryList from "../components/CountryList";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
-
+import ThemeContext from "../context/themeContext.js";
 interface RootProps {}
 
 export interface CountryType {
@@ -46,10 +46,18 @@ export const rootLoader = async (): Promise<CountriesType> => {
 };
 
 const Root: FunctionComponent<RootProps> = () => {
+  const [isDark, setIsDark] = useState(false);
+  const value = { isDark, toggleTheme: setIsDark };
   return (
     <>
-      <NavBar />
-      <Outlet />
+      <ThemeContext.Provider value={value}>
+        <div className={"font-space min-h-screen " + (isDark ? "dark" : null)}>
+          <div className="bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white">
+            <NavBar />
+            <Outlet />
+          </div>
+        </div>
+      </ThemeContext.Provider>
     </>
   );
 };

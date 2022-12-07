@@ -5,9 +5,10 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import { region } from "../routes/root";
 import FilterDropdown, { Entry } from "./FilterDropdown";
+import ThemeContext from "../context/themeContext";
 
 interface SearchBarProps {
   searchValue: string;
@@ -30,20 +31,21 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
     { label: "Europe", value: "Europe" },
     { label: "Oceania", value: "Oceania" },
   ];
+
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between gap-8">
-        <label className="flex items-center just py-4 bg-dark-blue rounded-md basis-4/12">
-          <FontAwesomeIcon icon={faSearch} className="text-white basis-1/4" />
+        <label className="flex items-center just py-4 rounded-md basis-4/12 bg-white dark:bg-dark-blue text-dark-gray dark:text-white">
+          <FontAwesomeIcon icon={faSearch} className=" basis-1/4" />
           <input
             type="text"
             value={searchValue}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search for a country..."
-            className="bg-dark-blue text-white font-light w-full focus:outline-none"
+            className="dark:bg-dark-blue font-light w-full focus:outline-none"
           />
         </label>
-        <div className="w-1/2 sm:basis-2/12">
+        <div className="w-1/2 sm:basis-2/12 bg-white dark:bg-dark-blue">
           <FilterDropdown
             selected={region}
             options={options}
