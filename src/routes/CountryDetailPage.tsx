@@ -64,7 +64,7 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
     <>
       <div className="mx-6 sm:mx-16 mt-10 pb-14 grid grid-cols-1 sm:grid-cols-2  gap-14 gap-x-20 place-items-start">
         <button
-          className="bg-dark-blue py-1 px-5 rounded-sm sm:col-span-2"
+          className="bg-white dark:bg-dark-blue py-1 px-5 rounded-sm sm:col-span-2 shadow-md"
           onClick={() => navigate(-1)}
         >
           <FontAwesomeIcon icon={faArrowLeftLong} className="mr-2" />
@@ -76,46 +76,46 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
           alt=""
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          <p className="font-extrabold text-lg sm:col-span-2">
+          <p className="font-extrabold text-3xl sm:col-span-2">
             {country.name.common}
           </p>
           <div className="flex flex-col gap-2">
             <p>
-              <span>Native Name: </span>
+              <span className="font-semibold">Native Name: </span>
               <span className="font-light">
                 {country.name.nativeName[native].common}
               </span>
             </p>
             <p>
-              <span>Population: </span>
+              <span className="font-semibold">Population: </span>
               <span className="font-light">
                 {country.population.toLocaleString()}
               </span>
             </p>
             <p>
-              <span>Region: </span>
+              <span className="font-semibold">Region: </span>
               <span className="font-light">{country.region}</span>
             </p>
             <p>
-              <span>Sub Region: </span>
+              <span className="font-semibold">Sub Region: </span>
               <span className="font-light">{country.subregion}</span>
             </p>
             <p>
-              <span>Capital: </span>
+              <span className="font-semibold">Capital: </span>
               <span className="font-light">{country.capital}</span>
             </p>
           </div>
           <div className="flex flex-col gap-2">
             <p>
-              <span>Top Level Domain: </span>
+              <span className="font-semibold">Top Level Domain: </span>
               <span className="font-light">{country.tld}</span>
             </p>
             <p>
-              <span>Currencies: </span>
+              <span className="font-semibold">Currencies: </span>
               <span className="font-light">{getCurrency()}</span>
             </p>
             <p>
-              <span>Languages: </span>
+              <span className="font-semibold">Languages: </span>
               <span className="font-light">{languages}</span>
             </p>
           </div>

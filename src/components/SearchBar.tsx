@@ -35,7 +35,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between gap-8">
-        <label className="flex items-center just py-4 rounded-md basis-4/12 bg-white dark:bg-dark-blue text-dark-gray dark:text-white">
+        <label className="flex items-center just py-4 rounded-md basis-4/12 bg-white shadow-sm dark:bg-dark-blue text-dark-gray dark:text-white">
           <FontAwesomeIcon icon={faSearch} className=" basis-1/4" />
           <input
             type="text"
@@ -45,7 +45,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
             className="dark:bg-dark-blue font-light w-full focus:outline-none"
           />
         </label>
-        <div className="w-1/2 sm:basis-2/12 bg-white dark:bg-dark-blue">
+        <div className="w-1/2 sm:basis-2/12 bg-white dark:bg-dark-blue shadow-sm">
           <FilterDropdown
             selected={region}
             options={options}

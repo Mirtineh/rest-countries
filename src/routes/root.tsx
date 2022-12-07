@@ -51,8 +51,8 @@ const Root: FunctionComponent<RootProps> = () => {
   return (
     <>
       <ThemeContext.Provider value={value}>
-        <div className={"font-space min-h-screen " + (isDark ? "dark" : null)}>
-          <div className="bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white">
+        <div className={"font-space " + (isDark ? "dark" : null)}>
+          <div className="bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white min-h-screen">
             <NavBar />
             <Outlet />
           </div>

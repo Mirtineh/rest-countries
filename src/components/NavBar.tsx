@@ -10,7 +10,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
   const { isDark, toggleTheme } = useContext(ThemeContext);
   return (
     <>
-      <div className="flex justify-between py-6 bg-white  dark:bg-dark-blue px-4 sm:px-14">
+      <div className="flex justify-between py-6 bg-white shadow-md  dark:bg-dark-blue px-4 sm:px-14">
         <h1 className="font-semibold">Where in the world?</h1>
         <div className="flex gap-3 items-center">
           <FontAwesomeIcon
