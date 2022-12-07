@@ -1,5 +1,10 @@
 import { FunctionComponent, useContext, useState } from "react";
-import { LoaderFunction, Outlet, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunction,
+  Outlet,
+  ScrollRestoration,
+  useLoaderData,
+} from "react-router-dom";
 import CountryList from "../components/CountryList";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
@@ -56,6 +61,7 @@ const Root: FunctionComponent<RootProps> = () => {
             <NavBar />
             <Outlet />
           </div>
+          <ScrollRestoration />
         </div>
       </ThemeContext.Provider>
     </>
