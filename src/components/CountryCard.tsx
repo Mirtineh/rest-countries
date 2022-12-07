@@ -17,9 +17,7 @@ const CountryCard: FunctionComponent<CountryCardProps> = ({ country }) => {
           />
         </span>
         <div className="mx-7">
-          <p className="text-center font-extrabold my-6">
-            {country.name.common}
-          </p>
+          <p className="text-lg font-extrabold my-6">{country.name.common}</p>
           <div className="flex flex-col gap-1">
             <p className="text-sm">
               <span className="font-semibold">Population: </span>

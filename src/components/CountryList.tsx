@@ -32,7 +32,7 @@ const CountryList: FunctionComponent<CountryListProps> = () => {
           onSearchChange={(value) => setSearchValue(value)}
           onRegionChange={(region) => setRegion(region)}
         />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 sm:gap-y-20 justify-items-center place-content-between mt-7 sm:mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 sm:gap-y-20 justify-items-center place-content-between mt-7 sm:mt-16">
           {filteredCountries.map((country) => {
             return (
               <Link

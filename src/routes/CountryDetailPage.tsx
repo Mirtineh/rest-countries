@@ -50,10 +50,15 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
   const { country, neighbours } = useLoaderData() as CountryWithNeighbours;
 
   //filters
-  const native = Object.keys(country.languages)[0];
-  const languages = Object.values(country.languages).join(", ");
+  const native = country.languages ? Object.keys(country.languages)[0] : null;
+  const languages = country.languages
+    ? Object.values(country.languages).join(", ")
+    : null;
   const getCurrency = () => {
-    const currenciesKeys = Object.keys(country.currencies);
+    const currenciesKeys = country.currencies
+      ? Object.keys(country.currencies)
+      : null;
+    if (!currenciesKeys) return null;
     let currencies: string[] = [];
     currenciesKeys.forEach((key) => {
       currencies.push(country.currencies[key].name);
@@ -80,12 +85,15 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
             {country.name.common}
           </p>
           <div className="flex flex-col gap-2">
-            <p>
-              <span className="font-semibold">Native Name: </span>
-              <span className="font-light">
-                {country.name.nativeName[native].common}
-              </span>
-            </p>
+            {native ? (
+              <p>
+                <span className="font-semibold">Native Name: </span>
+                <span className="font-light">
+                  {country.name.nativeName[native].common}
+                </span>
+              </p>
+            ) : null}
+
             <p>
               <span className="font-semibold">Population: </span>
               <span className="font-light">
@@ -96,28 +104,39 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <span className="font-semibold">Region: </span>
               <span className="font-light">{country.region}</span>
             </p>
-            <p>
-              <span className="font-semibold">Sub Region: </span>
-              <span className="font-light">{country.subregion}</span>
-            </p>
-            <p>
-              <span className="font-semibold">Capital: </span>
-              <span className="font-light">{country.capital}</span>
-            </p>
+            {country.subregion ? (
+              <p>
+                <span className="font-semibold">Sub Region: </span>
+                <span className="font-light">{country.subregion}</span>
+              </p>
+            ) : null}
+
+            {country.capital ? (
+              <p>
+                <span className="font-semibold">Capital: </span>
+                <span className="font-light">{country.capital}</span>
+              </p>
+            ) : null}
           </div>
+
           <div className="flex flex-col gap-2">
             <p>
               <span className="font-semibold">Top Level Domain: </span>
               <span className="font-light">{country.tld}</span>
             </p>
-            <p>
-              <span className="font-semibold">Currencies: </span>
-              <span className="font-light">{getCurrency()}</span>
-            </p>
-            <p>
-              <span className="font-semibold">Languages: </span>
-              <span className="font-light">{languages}</span>
-            </p>
+            {country.currencies ? (
+              <p>
+                <span className="font-semibold">Currencies: </span>
+                <span className="font-light">{getCurrency()}</span>
+              </p>
+            ) : null}
+
+            {country.languages ? (
+              <p>
+                <span className="font-semibold">Languages: </span>
+                <span className="font-light">{languages}</span>
+              </p>
+            ) : null}
           </div>
           {neighbours.length > 0 ? (
             <div className="flex flex-col gap-4 sm:col-span-2">
