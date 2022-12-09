@@ -5,6 +5,8 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "react-router-dom";
+import axios from "axios";
+
 import CountryList from "../components/CountryList";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
@@ -40,14 +42,21 @@ export interface CountryType {
   };
 }
 export type region = "Asia" | "Africa" | "Americas" | "Europe" | "Oceania" | "";
-export interface CountriesType {
-  countries: CountryType[];
-}
-export const rootLoader = async (): Promise<CountriesType> => {
-  const result = await fetch("https://restcountries.com/v3.1/all");
-  if (!result.ok) throw Error("Something went wrong");
-  const countries = await result.json();
-  return { countries };
+export const rootLoader = async (): Promise<CountryType[]> => {
+  try {
+    const { data } = await axios.get<CountryType[]>(
+      "https://restcountries.com/v3.1/all"
+    );
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.log("error message: ", error.message);
+      throw Error();
+    } else {
+      console.log("unexpected error: ", error);
+      throw Error();
+    }
+  }
 };
 
 const Root: FunctionComponent<RootProps> = () => {
@@ -56,10 +65,12 @@ const Root: FunctionComponent<RootProps> = () => {
   return (
     <>
       <ThemeContext.Provider value={value}>
-        <div className={"font-space " + (isDark ? "dark" : null)}>
+        <div className={"font-space " + (isDark ? "dark" : "")}>
           <div className="bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white min-h-screen">
-            <NavBar />
-            <Outlet />
+            <div className="flex flex-col min-h-screen">
+              <NavBar />
+              <Outlet />
+            </div>
           </div>
           <ScrollRestoration />
         </div>

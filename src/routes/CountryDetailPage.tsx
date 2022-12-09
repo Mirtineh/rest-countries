@@ -5,10 +5,11 @@ import {
   useLoaderData,
   useNavigate,
 } from "react-router-dom";
+import axios from "axios";
+
 import { CountryType } from "./root";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import Button from "../components/Button";
 
 type CountryWithNeighbours = {
