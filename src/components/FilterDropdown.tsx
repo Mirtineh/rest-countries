@@ -46,10 +46,10 @@ const FilterDropdown: FunctionComponent<FilterDropdownProps> = ({
               tabIndex={-1}
               onClick={() => setIsOpen((prev) => !prev)}
             ></button>
-            <div className="absolute w-full my-1 rounded-md  py-3 px-4 cursor-pointer bg-white dark:bg-dark-blue">
+            <div className="absolute w-full my-1 rounded-md  py-3 cursor-pointer bg-white dark:bg-dark-blue">
               {options.map((option) => (
                 <p
-                  className="py-1"
+                  className="px-4 py-1 hover:bg-dark-gray dark:hover:bg-very-dark-blue"
                   onClick={() => handleSelected(option)}
                   key={option.value}
                 >

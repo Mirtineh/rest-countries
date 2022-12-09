@@ -25,11 +25,11 @@ const CountryCard: FunctionComponent<CountryCardProps> = ({ country }) => {
                 {country.population.toLocaleString()}
               </span>
             </p>
-            <p>
+            <p className="text-sm">
               <span className="font-semibold">Region: </span>
               <span className="font-light">{country.region}</span>
             </p>
-            <p>
+            <p className="text-sm">
               <span className="font-semibold">Capital: </span>
               <span className="font-light">{country.capital}</span>
             </p>
