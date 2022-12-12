@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./index.css";
 import "./App.css";
 import {
@@ -14,7 +13,7 @@ import CountryList from "./components/CountryList";
 import CountryDetailPage, { countryLoader } from "./routes/CountryDetailPage";
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/rest-countries/",
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
@@ -24,7 +23,7 @@ const router = createBrowserRouter([
         loader: rootLoader,
       },
       {
-        path: "/countries/:name",
+        path: "countries/:name",
         element: <CountryDetailPage />,
         loader: countryLoader,
       },

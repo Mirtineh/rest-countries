@@ -37,7 +37,7 @@ const CountryList: FunctionComponent<CountryListProps> = () => {
             {filteredCountries.map((country) => {
               return (
                 <Link
-                  to={`countries/${country.name.common}`}
+                  to={`countries/${encodeURI(country.name.common)}`}
                   key={country.name.common}
                 >
                   <CountryCard key={country.name.common} country={country} />

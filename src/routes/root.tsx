@@ -65,7 +65,8 @@ const Root: FunctionComponent<RootProps> = () => {
   return (
     <>
       <ThemeContext.Provider value={value}>
-        <div className={"font-space " + (isDark ? "dark" : "")}>
+        <script type="module" src="/src/main.tsx"></script>
+        <main className={"font-space " + (isDark ? "dark" : "")}>
           <div className="bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white min-h-screen">
             <div className="flex flex-col min-h-screen">
               <NavBar />
@@ -73,7 +74,27 @@ const Root: FunctionComponent<RootProps> = () => {
             </div>
           </div>
           <ScrollRestoration />
-        </div>
+        </main>
+        <footer className={"font-space " + (isDark ? "dark" : "")}>
+          <div className="text-center bg-very-light-gray dark:bg-very-dark-blue text-very-dark-blue-2 dark:text-white">
+            <span>Challenge by </span>
+            <a
+              href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca/hub"
+              target="_blank"
+              className="hover:cursor-pointer font-extrabold"
+            >
+              Frontend Mentor
+            </a>
+            . <span>Coded by </span>
+            <a
+              href="https://www.frontendmentor.io/profile/Mirtineh"
+              className="hover:cursor-pointer font-extrabold"
+            >
+              Mirtineh
+            </a>
+            .
+          </div>
+        </footer>
       </ThemeContext.Provider>
     </>
   );

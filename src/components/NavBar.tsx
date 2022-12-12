@@ -12,7 +12,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
   return (
     <>
       <div className="flex justify-between py-6 bg-white shadow-md  dark:bg-dark-blue px-4 sm:px-14 sticky top-0 z-10">
-        <Link to="/">
+        <Link to="/rest-countries">
           <h1 className="font-semibold">Where in the world?</h1>
         </Link>
         <div className="flex gap-3 items-center">

@@ -145,7 +145,9 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
               <div className="flex flex-wrap gap-2">
                 {neighbours.map((neighbor) => (
                   <Link
-                    to={`/countries/${neighbor.name.common}`}
+                    to={`/rest-countries/countries/${encodeURI(
+                      neighbor.name.common
+                    )}`}
                     key={neighbor.name.common}
                   >
                     <Button
