@@ -151,7 +151,6 @@ const CountryDetailPage: FunctionComponent<CountryDetailPageProps> = () => {
                     <Button
                       key={neighbor.name.common}
                       label={neighbor.name.common}
-                      onClick={() => console.log("how are you")}
                     />
                   </Link>
                 ))}

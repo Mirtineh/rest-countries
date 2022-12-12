@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 
 interface ButtonProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button: FunctionComponent<ButtonProps> = ({ label, onClick }) => {
@@ -10,7 +10,7 @@ const Button: FunctionComponent<ButtonProps> = ({ label, onClick }) => {
     <>
       <button
         className="py-1 px-6 rounded-sm bg-white dark:bg-dark-blue shadow-md"
-        onClick={() => onClick()}
+        onClick={() => onClick?.()}
       >
         {label}
       </button>
