@@ -8,11 +8,11 @@ const NoResultFound: FunctionComponent<NoResultFoundProps> = () => {
   return (
     <>
       <div className="flex-auto flex justify-center items-center h-full">
-        <div className="flex justify-center items-center bg-white w-96 h-96 shadow-md">
+        <div className="flex justify-center items-center bg-white dark:bg-dark-blue w-96 h-96 shadow-md rounded-md">
           <div className="flex flex-col items-center gap-4">
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              className="w-10 h-10 text-dark-gray"
+              className="w-10 h-10 text-dark-gray dark:text-white"
             />
             <p className="font-extrabold">No Results Found</p>
           </div>
