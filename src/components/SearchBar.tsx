@@ -35,7 +35,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = ({
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between gap-8">
-        <label className="flex items-center sm:w-[475px] py-4 rounded-md bg-white shadow-sm dark:bg-dark-blue text-dark-gray dark:text-white">
+        <label className="flex items-center sm:w-[475px] py-4 rounded-md bg-white shadow-sm dark:bg-dark-blue text-dark-gray dark:text-white hover:cursor-pointer">
           <FontAwesomeIcon icon={faSearch} className=" basis-1/4" />
           <input
             type="text"
